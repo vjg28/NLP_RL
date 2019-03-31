@@ -142,6 +142,8 @@ class SpanExperiment(Experiment):
         self.index_word = {key: value for value,
                         key in self.env['word_index'].items()}
         self.word_index = self.env['word_index']
+        
+        ############################### no errors ########################################## 
 
         self.mdl = SpanModel(len(self.env['word_index']),
                         self.args,
@@ -388,7 +390,7 @@ class SpanExperiment(Experiment):
 
         assert(len(all_start)==len(all_end))
         assert(len(all_start)==len(data))
-        spans = zip(all_start, all_end)
+        spans = list(zip(all_start, all_end))
 
         if('Baidu' in self.args.dataset):
             original = passages_str
@@ -401,7 +403,7 @@ class SpanExperiment(Experiment):
                                     questions=[x[1] for x in original_data],
                                     set_type=set_type,
                                     align_spans=align_spans,
-                                    spans2=zip(all_yp1, all_yp2))
+                                    spans2=list(zip(all_yp1, all_yp2)))
         acc = 0
         self.write_to_file("[{}] Loss={}".format(
                             name, np.mean(losses)))

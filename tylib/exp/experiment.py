@@ -260,9 +260,11 @@ class Experiment(object):
                 if(len(_val)==0):
                     continue
                 primary_metrics.append([key, _val[0]])
+            
+            print(primary_metrics)
 
             sorted_metrics = sorted(primary_metrics,
-                                    key=operator.itemgetter(1),
+                                    key= lambda i: i[1]['val'],
                                         reverse=reverse)
             cur_dev_score = primary_metrics[-1][1]['val']
             best_epoch = sorted_metrics[0][0]
@@ -286,11 +288,12 @@ class Experiment(object):
             if(len(_val)==0):
                 continue
             test_metrics.append([key, _val[0]])
-
+            
+        print(test_metrics)
         # if(len(primary_metrics)==0):
         #     return False
 
-        sorted_test = sorted(test_metrics, key=operator.itemgetter(1),
+        sorted_test = sorted(test_metrics, key= lambda i: i[1]['val'],
                                     reverse=reverse)
 
         max_epoch = sorted_test[0][0]
