@@ -298,14 +298,15 @@ class SpanExperiment(Experiment):
         merge_dict = {}
         for key, value in predict_dict.items():
             _ans = ans_dict[key]
-            _ans = [x.encode('utf-8') for x in _ans]
-            value = [x.encode('utf-8') for x in value]
+            #_ans = [x.encode('utf-8') for x in _ans]		# my edit
+            #value = [x.encode('utf-8') for x in value]		# my edit
             merge_dict[key] = [value, _ans]
 
+        
         print("errors={} out of {}".format(error_rate, len(passage)))
         try:
             with open(self.out_dir+'./{}.pred_ans.json'.format(set_type), 'w+') as f:
-                json.dump(merge_dict, f, indent=4, ensure_ascii=False)
+                json.dump(merge_dict, f, indent=4, ensure_ascii=False)	
         except:
             print("Can't find write due to some reason..")
 
