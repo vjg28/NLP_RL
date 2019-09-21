@@ -11,3 +11,6 @@
 - Multi-gpu code gives error. No clue. :(
 - If you have 12 hours to pass your time, do use prep codes with python 2 for preprocessing.
 - Still onto testing
+
+## Source
+- [Link](https://github.com/vanzytay/NIPS2018_DECAPROP)
